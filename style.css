@@ -14,9 +14,6 @@
     border: none;
 }
 
-.colored-background {
-    background-color: black;
-}
 
 .slidecontainer {
     display: flex;

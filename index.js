@@ -4,9 +4,11 @@ const slider = document.querySelector('#myRange');
 const para = document.querySelector('.show-range');
 
 
+
 //Variables
 let isDrawing = false;
 const DEFAULLT_SIZE = 16;
+let currentColor = 'black';
 
 
 function createGrid(size){
@@ -25,6 +27,11 @@ function clearGrid() {
     }
 }
 
+function cleanUpGrid() {
+    const allSquares = document.querySelectorAll('.in-grid');
+    allSquares.forEach((square) => square.style.backgroundColor = "transparent")
+}
+
 
 function appendSquare(oneSquareSize){
     const new_div = document.createElement('div');
@@ -36,8 +43,12 @@ function appendSquare(oneSquareSize){
 }
 
 function addContainerEventListener(){
-    container.addEventListener('mousedown', () => isDrawing = true);
-    container.addEventListener('mouseup', () => isDrawing = false);
+    container.addEventListener('mousedown', (event) => {
+        event.preventDefault();
+        isDrawing = true});
+    container.addEventListener('mouseup', (event) => {
+        event.preventDefault();
+        isDrawing = false});
 }
 
 function addSliderEventListener(){
@@ -50,19 +61,32 @@ function addSliderEventListener(){
 }
 
 function addSquareEventListener(){
-    allSquares = document.querySelectorAll('.in-grid');
+    const allSquares = document.querySelectorAll('.in-grid');
     allSquares.forEach(square => {square.addEventListener('mouseover', ()=> {
         if (isDrawing){
-            square.classList.add("colored-background")
+            console.log(currentColor);
+            square.style.backgroundColor = currentColor;
         } 
         })   
     });
 }
 
+function addButtonEventListener(){
+    eraserButton = document.querySelector('#eraser');
+    eraserButton.addEventListener('click', () => currentColor = "transparent");
+    drawButton = document.querySelector('#color');
+    colorChooser = document.querySelector('#colorPickerInput')
+    colorChooser.addEventListener('change', () => currentColor = colorChooser.value);
+    drawButton.addEventListener('click', () => {
+        currentColor = colorChooser.value});
+    clearButton = document.querySelector('#clearButton');
+    clearButton.addEventListener('click', cleanUpGrid);
+}
 
 window.onload = () => {
     createGrid(DEFAULLT_SIZE);
     addSquareEventListener();
     addContainerEventListener();
     addSliderEventListener();
+    addButtonEventListener();
   }
