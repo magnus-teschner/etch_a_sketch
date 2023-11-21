@@ -1,0 +1,17 @@
+.grid-container {
+    border: 5px solid black;
+    width: 1216px;
+    height: 1216px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 60px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.in-grid {
+    box-sizing: border-box;
+    width: 76px;
+    height: 76px;
+    border: 1px solid black;
+}
