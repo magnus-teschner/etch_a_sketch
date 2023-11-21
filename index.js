@@ -9,9 +9,17 @@ for (let i = 0; i < 256; i++){
 }
 
 
+let isDrawing = false;
+
+container.addEventListener('mousedown', () => isDrawing = true);
+container.addEventListener('mouseup', () => isDrawing = false);
+
+
+
 allSquares = document.querySelectorAll('.in-grid');
-allSquares.forEach(square => {square.addEventListener('click', ()=> {
-    square.style.backgroundColor = "black";
-})
-    
+allSquares.forEach(square => {square.addEventListener('mouseover', ()=> {
+    if (isDrawing){
+        square.style.backgroundColor = "black";
+    } 
+})   
 });
