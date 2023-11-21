@@ -52,11 +52,13 @@ function addContainerEventListener(){
 }
 
 function addSliderEventListener(){
+    slider.addEventListener('input', () => {
+        para.textContent = `${slider.value} x ${slider.value}`;
+    })
+
     slider.addEventListener('change', () => {
-        para.textContent = `${slider.value} x ${slider.value}`
         createGrid(+slider.value);
         addSquareEventListener();
-
     })
 }
 
