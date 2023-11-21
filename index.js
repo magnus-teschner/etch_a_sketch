@@ -6,6 +6,7 @@ const para = document.querySelector('.show-range');
 
 
 //Variables
+let drawRainbow = false;
 let isDrawing = false;
 const DEFAULT_SIZE = 16;
 let currentColor = 'black';
@@ -66,8 +67,13 @@ function addSquareEventListener(){
     const allSquares = document.querySelectorAll('.in-grid');
     allSquares.forEach(square => {square.addEventListener('mouseover', ()=> {
         if (isDrawing){
-            console.log(currentColor);
-            square.style.backgroundColor = currentColor;
+            if (drawRainbow){
+                square.style.backgroundColor = getRandomRGB();
+
+            } else{
+                square.style.backgroundColor = currentColor;
+            }
+            
         } 
         })   
     });
@@ -80,9 +86,20 @@ function addButtonEventListener(){
     colorChooser = document.querySelector('#colorPickerInput')
     colorChooser.addEventListener('change', () => currentColor = colorChooser.value);
     drawButton.addEventListener('click', () => {
+        drawRainbow = false;
         currentColor = colorChooser.value});
     clearButton = document.querySelector('#clearButton');
     clearButton.addEventListener('click', cleanUpGrid);
+    rainbowButton = document.querySelector('#rainbowButton');
+    rainbowButton.addEventListener('click', () => drawRainbow = true);
+}
+
+function getRandomRGB() {
+    var red = Math.floor(Math.random() * 256);
+    var green = Math.floor(Math.random() * 256);
+    var blue = Math.floor(Math.random() * 256);
+
+    return `rgb(${red}, ${green}, ${blue})`;
 }
 
 window.onload = () => {
@@ -92,3 +109,5 @@ window.onload = () => {
     addSliderEventListener();
     addButtonEventListener();
   }
+
+
