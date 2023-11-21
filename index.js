@@ -7,7 +7,7 @@ const para = document.querySelector('.show-range');
 
 //Variables
 let isDrawing = false;
-const DEFAULLT_SIZE = 16;
+const DEFAULT_SIZE = 16;
 let currentColor = 'black';
 
 
@@ -86,7 +86,7 @@ function addButtonEventListener(){
 }
 
 window.onload = () => {
-    createGrid(DEFAULLT_SIZE);
+    createGrid(DEFAULT_SIZE);
     addSquareEventListener();
     addContainerEventListener();
     addSliderEventListener();
