@@ -13,7 +13,6 @@
 .in-grid {
     box-sizing: border-box;
     border: none;
-    flex-shrink: 1;
 }
 
 
@@ -22,6 +21,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: baseline;
+    margin-top: 15px;
 }
 
 button {
@@ -39,6 +39,10 @@ button:hover {
 
 body {
     font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
 }
 
 .button-container {
@@ -80,3 +84,16 @@ input[type="color"]::-webkit-color-swatch {
     background-color: black;
     cursor: pointer;
   }
+
+.footer {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+}
+
+
+.footer > p {
+    margin-bottom: 8px;
+}
