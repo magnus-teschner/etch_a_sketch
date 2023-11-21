@@ -51,7 +51,6 @@ function addSliderEventListener(){
 
 function addSquareEventListener(){
     allSquares = document.querySelectorAll('.in-grid');
-    allSquares.forEach(square)
     allSquares.forEach(square => {square.addEventListener('mouseover', ()=> {
         if (isDrawing){
             square.classList.add("colored-background")
@@ -64,6 +63,6 @@ function addSquareEventListener(){
 window.onload = () => {
     createGrid(DEFAULLT_SIZE);
     addSquareEventListener();
-    containerEventListener();
+    addContainerEventListener();
     addSliderEventListener();
   }
